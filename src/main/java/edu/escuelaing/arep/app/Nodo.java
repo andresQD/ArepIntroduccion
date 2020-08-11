@@ -24,4 +24,22 @@ public class Nodo {
         System.out.print(" " + i);
         
     }
+
+    public float getI() {
+        return i;
+    }
+
+    public void setI(float i) {
+        this.i = i;
+    }
+
+    public Nodo getSiguiente() {
+        return siguiente;
+    }
+
+    public void setSiguiente(Nodo siguiente) {
+        this.siguiente = siguiente;
+    }
+    
+    
 }
