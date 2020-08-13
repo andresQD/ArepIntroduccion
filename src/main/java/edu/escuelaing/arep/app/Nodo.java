@@ -6,40 +6,55 @@
 package edu.escuelaing.arep.app;
 
 /**
- *
+ * La clase Nodo permite referenciar los elementos dentro de la lissta encadenada
  * @author Andrés Quintero
  */
 public class Nodo {
     //datos
-    float i;
+    private float i;
     //Referencia al nodo siguiente
-    Nodo siguiente;
+    private Nodo siguiente;
     
-    public Nodo(float i){
-        this.i = i;
-        this.siguiente = null;
+    /**
+     * Constructor de la clase Nodo
+     * @param valor
+     */
+    public Nodo(float valor){
+        i = valor;
     }
     
-    public void mostrarData(){
-        System.out.print(" " + i);
-        
-    }
-
+    /**
+     * Este método permite traer datos dentro de la lista encadenada
+     * 
+     */
     public float getI() {
         return i;
     }
-
+    
+    /**
+     * Este método permite asignar datos dentro de la lista encadenada
+     * @param i
+     */
     public void setI(float i) {
         this.i = i;
     }
-
+    
+    /**
+     * Este método permite traer el nodo siguiente de otro nodo dentro de la lista encadenada
+     * 
+     */
     public Nodo getSiguiente() {
         return siguiente;
     }
-
-    public void setSiguiente(Nodo siguiente) {
-        this.siguiente = siguiente;
-    }
     
+    /**
+     * Este método permite asignar el nodo siguiente de otro nodo dentro de la lista encadenada
+     * @param n
+     */
+    public void setSiguiente(Nodo n) {
+        siguiente = n;
+        
+    }
+
     
 }

@@ -1,38 +1,62 @@
 package edu.escuelaing.arep.app;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
 
 /**
- * Unit test for simple App.
+ *
+ * @author Andres Quintero
+ *
+ * @version (a version 15/8/19)
  */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
+public class AppTest {
 
     /**
-     * @return the suite of tests being tested
+     * Default constructor for test class AppTest
      */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
+    public AppTest() {
     }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    @Test
+    public void pruebaJUnit() {
+
+        assertTrue(true);
+    }
+
+    @Test
+    public void promedioDeberiaSerCorrecto() throws IOException {
+        LinkedList lista = new LinkedList();
+        BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\file.txt"));
+        String str = null;
+        while ((str = br.readLine()) != null) {
+            float valor = Float.parseFloat(str);
+            lista.insertarInicio((float) valor);;
+        }
+        double promedio = App.promedio(lista);
+        assertEquals(String.format("%.2f", promedio), "638,90");
+        br.close();
+    }
+
+    @Test
+    public void desviacionDeberiaSerCorrecta() throws IOException {
+        LinkedList lista = new LinkedList();
+        LinkedList lista1 = new LinkedList();
+        BufferedReader br = new BufferedReader(new FileReader("src\\main\\resources\\file.txt"));
+        String str = null;
+        while ((str = br.readLine()) != null) {
+            float valor = Float.parseFloat(str);
+            lista.insertarInicio(valor);
+            lista1.insertarInicio(valor);
+        }
+        float promedio = App.promedio(lista);
+        float desviacion = App.desviacion(lista1, promedio);
+        //System.out.println(desviacion);
+        assertEquals(String.format("%.2f", desviacion), "625,63");
+        br.close();
     }
 }
